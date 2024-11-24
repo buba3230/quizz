@@ -1,0 +1,22 @@
+h3, h5 {
+    text-align: center;
+}
+
+.quizz-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.answers {
+    flex-direction: column;
+}
+
+.play {
+    background-color: green;
+}
+
+.cancel {
+    background-color: yellow;
+}

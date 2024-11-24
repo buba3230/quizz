@@ -1,0 +1,16 @@
+<ng-container *ngIf="result$ | async as results">
+    <h3>Your results :</h3>
+    <p>TotalTime: {{results.time}}</p>
+    <p>Correct answers: {{correctAnswersCount}}</p>
+    <p>Points: {{results.points}} of 100</p>
+    <p *ngIf="easiest">Easiest question for you: {{easiest}}</p>
+    <p *ngIf="hardest">Hardest question for you: {{hardest}}</p>
+    <p>Answers :</p>
+    <div *ngFor="let answer of results.answers" class="answer">
+        {{answer.id}}. {{answer.question}}
+        <p>Correct answer : {{answer.correct_answer}}</p>
+        <p>Selected answer : {{answer.selectedAnswer}}</p>
+        <p>Spended time: {{answer.time}}</p>
+        <p>Status : <span [ngClass]="answer.status ? 'correct' : 'incorrect'">{{answer.status ? 'Correct' : 'Incorrect'}}</span></p>
+    </div>
+</ng-container>

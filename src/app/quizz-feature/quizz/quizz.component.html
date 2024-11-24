@@ -1,0 +1,24 @@
+<ng-container *ngIf="quizz">
+<h3>{{quizz.category}}</h3>
+<p class="quizz-actions">
+    <button mat-stroked-button class="play" (click)="play()" *ngIf="!showQuestions">PLAY</button>
+    <button mat-stroked-button class="cancel" (click)="cancel()">Cancel quizz</button>
+</p>
+<div class="question" *ngIf="showQuestions">
+    <h5>{{questionIndex + 1}} of {{totalSize}} ) {{quizz.questions[questionIndex].question}}</h5>
+    <div class="quizz-actions answers">
+        <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="answer">
+        @for (answer of quizz.questions[questionIndex].allAnswers; track answer) {
+            <mat-radio-button class="example-radio-button" [value]="answer">{{answer}}</mat-radio-button>
+            <br>
+        }
+    </mat-radio-group>
+    <span>Time on question: {{hours}}:{{minutes}}:{{seconds}}:{{milliseconds}}</span>
+    <span>Total time: {{totalHours}}:{{totalMinutes}}:{{totalSeconds}}:{{totalMilliseconds}}</span>
+    <button mat-stroked-button class="play" (click)="makeChoise()" [disabled]="!answer">Answer</button>
+    </div>
+</div>
+</ng-container>
